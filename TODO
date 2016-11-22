@@ -1,0 +1,5 @@
+Instead of passwords - noncewords!
+Basically, take the Auth0 ID for the person, combine it with their nonce word, and hash it.
+That's then their user ID.
+Advise people to use something memorable and uncommon, but it doesn't have to be crazy, since it's not actually
+a password - their AuthO results handle that part.

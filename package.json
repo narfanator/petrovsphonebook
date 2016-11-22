@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "dev": "next"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "lodash": "^4.17.2",
+    "next": "^1.1.2",
+    "react-bootstrap": "^0.30.6",
+    "react-jade": "^2.5.0"
+  },
+  "name": "petrov",
+  "version": "1.0.0",
+  "description": "Directory for convincing the people actually holding the guns not to use them",
+  "main": "index.js",
+  "license": "MIT"
+}
