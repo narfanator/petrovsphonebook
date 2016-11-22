@@ -40,7 +40,6 @@ export default class Layout extends React.Component {
 
           <link rel="stylesheet" type="text/css" href="/static/bootstrap-3.3.7-dist/css/bootstrap.css" />
           <link rel="stylesheet" type="text/css" href="/static/bootstrap-3.3.7-dist/css/bootstrap-theme.css" />
-          <link rel="stylesheet" type="text/css" href="/static/bootstrap-3.3.7-dist/js/bootstrap.js" />
 
         </Head>
 
@@ -48,27 +47,18 @@ export default class Layout extends React.Component {
           <Navbar.Header>
 
             <Navbar.Brand>
-              <a href="/">Petrovs Phonebook</a>
+              <Link href="/">Petrovs Phonebook</Link>
             </Navbar.Brand>
 
             <Navbar.Toggle />
 
             <Navbar.Collapse>
               <Nav>
-                <NavItem eventKey={1}>
+                <NavItem componentClass='div'>
                   <Link href="/list">
                     Protests
                   </Link>
                 </NavItem>
-                //<NavItem eventKey={1}><Link href="/submit">Submit</Link></NavItem>
-                //<NavItem eventKey={1}><Link href="/about">About</Link></NavItem>
-                /*<NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-                  <MenuItem eventKey={3.1}>Action</MenuItem>
-                  <MenuItem eventKey={3.2}>Another action</MenuItem>
-                  <MenuItem eventKey={3.3}>Something else here</MenuItem>
-                  <MenuItem divider />
-                  <MenuItem eventKey={3.3}>Separated link</MenuItem>
-                </NavDropdown>*/
               </Nav>
               <Nav pullRight>
                 <NavItem eventKey={2} href="#">

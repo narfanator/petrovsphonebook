@@ -19,63 +19,9 @@ export default class extends React.Component {
     return (
       <div>
         <Layout />
-        Blah blah
+        <h>Petrov's Phonebook</h>
+        <p>Petrov's Phonebook is designed to help you figure out who to call when you want the people holding the weapons to stop using them</p>
       </div>
     )
-  }
-}
-
-const styles = {
-  th: {
-    background: '#00cccc',
-    color: '#fff',
-    textTransform: 'uppercase',
-    fontSize: '12px',
-    padding: '12px 35px',
-  },
-
-  header: {
-    font: '15px Monaco',
-    textAlign: 'center'
-  },
-
-  table: {
-    fontFamily: 'Arial',
-    margin: '25px auto',
-    borderCollapse: 'collapse',
-    border: '1px solid #eee',
-    borderBottom: '2px solid #00cccc'
-  },
-
-  td: {
-    color: '#999',
-    border: '1px solid #eee',
-    padding: '12px 35px',
-    borderCollapse: 'collapse'
-  },
-
-  list: {
-    padding: '50px',
-    textAlign: 'center'
-  },
-
-  photo: {
-    display: 'inline-block'
-  },
-
-  photoLink: {
-    color: '#333',
-    verticalAlign: 'middle',
-    cursor: 'pointer',
-    background: '#eee',
-    display: 'inline-block',
-    width: '250px',
-    height: '250px',
-    lineHeight: '250px',
-    margin: '10px',
-    border: '2px solid transparent',
-    ':hover': {
-      borderColor: 'blue'
-    }
   }
 }
