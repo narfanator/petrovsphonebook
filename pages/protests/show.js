@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import QueryString from 'querystring'
 
 import { style } from 'next/css'
 import Layout from '../../pages/_layout.js'
@@ -11,26 +12,16 @@ import * as _ from 'lodash'
 export default class extends React.Component {
 
   static async getInitialProps(req) {
-    console.log("getInitialProps")
-    console.log(req)
-
-    /*TODO CURRENT:
-    Your problem is that you need to search by ObjectID (Which is a hex number)
-    rather than ID string. Since your current (silly) method for getting a data request
-    is to use the URL path, rather than the query params...
-
-    ...Well anyway. Rethink shit.
-
-
-    */
+    //TODO: Got to be a way to just grab this from the request object
+    const path = req.pathname + "?" + QueryString.stringify(req.query)
     return new Promise( (resolve, reject) => (
-      axios.get('http://localhost:3001/protests/_id/'+req.query._id)
+      axios.get('http://localhost:3001'+path)
         .then((response) => {
-          console.log("success")
-          resolve(response.data)
+          resolve(response.data[0])
         })
         .catch((error) => {
           console.log("error")
+          console.log(error)
           reject(error)
         })
     ))
@@ -42,8 +33,6 @@ export default class extends React.Component {
 
   render() {
     const protest = this.props.protest
-    console.log("rendering")
-    console.log(this.props)
     return (
       <div>
         <Layout />
