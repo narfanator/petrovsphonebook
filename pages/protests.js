@@ -1,7 +1,5 @@
 import React from 'react'
 
-import protests from '../data/protests'
-
 import { style } from 'next/css'
 import Link from 'next/link'
 import { Table } from 'react-bootstrap'
@@ -12,7 +10,9 @@ import axios from 'axios'
 
 export default class extends React.Component {
 
-  static async getInitialProps () { //Note: It appears that this ONLY gets run on the server!
+  static async getInitialProps () {
+    //TODO: Extract out to it's own function, and branch on waiting on the promise based on server / not server
+     //Note: It appears that this ONLY gets run on the server! Update: NOPE. Also gets called client side when you navigate to this page
     //Fetch data from server HERE
     //OHSHIT. I think - okay, I think you can use the Docker network name as the HTTP name here,
     // and in the composed containers, it'll fetch from the container, and on the web, it'll fetch from the website
@@ -30,7 +30,7 @@ export default class extends React.Component {
     )
 
     /*
-    TODO: Understand async / await,  isomorphic-fetch, and look at this code snipped:
+    TODO: Understand async / await, isomorphic-fetch, and look at this code snipped:
     static async getInitialProps(){
     let results = [];
     const res = await request
@@ -66,7 +66,7 @@ export default class extends React.Component {
                 this.props.protests.map( (protest, i) => (
                     <tr key={i}>
                         <td>
-                          <Link href={`/protest?id=${protest.id}`}>{ protest.name }</Link>
+                          <Link href={`/protests/show?id=${protest.id}`}>{ protest.name }</Link>
                         </td>
                         <td>{ protest.jurisdiction.join(", ") }</td>
                         <td><a href={protest.website}>{ protest.website }</a></td>
