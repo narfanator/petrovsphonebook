@@ -9,9 +9,6 @@ import { Table } from 'react-bootstrap'
 import Layout from '../pages/_layout.js'
 
 export default class extends React.Component {
-  static getInitialProps () {
-    return { protests: protests }
-  }
 
   render () {
 
