@@ -14,8 +14,6 @@ export default class extends React.Component {
   }
 
   render () {
-
-
     return (
       <div>
         <Layout />
@@ -32,10 +30,10 @@ export default class extends React.Component {
                 this.props.protests.map( (protest, i) => (
                     <tr key={i}>
                         <td>
-                          <Link href={`/accont?id=${protest.id}`}>{ protest.name }</Link>
+                          <Link href={`/protest?id=${protest.id}`}>{ protest.name }</Link>
                         </td>
                         <td>{ protest.jurisdiction.join(", ") }</td>
-                        <td>{ protest.website }</td>
+                        <td><a href={protest.website}>{ protest.website }</a></td>
                     </tr>
                 ))
             }
