@@ -55,7 +55,7 @@ export default class Layout extends React.Component {
             <Navbar.Collapse>
               <Nav>
                 <NavItem componentClass='div'>
-                  <Link href="/list">
+                  <Link href="/protests">
                     Protests
                   </Link>
                 </NavItem>
