@@ -20,6 +20,8 @@ const database_action = function(callback) {
 //TODO: Security token check
 const srv = Micro(async function(req, res) {
 
+  res.setHeader("Access-Control-Allow-Origin", "*")
+
   if(req.url == "/favicon.ico") {
     Micro.send(res, 200)
   } else {
