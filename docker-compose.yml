@@ -1,0 +1,47 @@
+version: '2'
+services:
+  webapp:
+    build: .
+    #image: webapp
+    ports:
+      - "3000"
+    depends_on:
+      - server
+    command: npm run dev
+    networks:
+      - frontend
+    volumes:
+    #  - /Users/.../.../petrov:/usr/app/src:ro # Theoretically, this would allow for a nice developer mode
+    - ./logs:/usr/app/logs #May need to seperately specify the volume and use volumes_from
+  server:
+    build: .
+    #image: server
+    ports:
+      - "3001"
+    links:
+      - database
+    depends_on:
+      - database
+    command: npm run server
+    networks:
+      - frontend
+      - backend
+    volumes:
+    #  - /Users/.../.../petrov:/usr/app/src:ro
+      - ./logs:/usr/app/logs
+  database:
+    image: mongo:3.2
+    ports:
+      - "27017"
+    #command: # The default command / entry point is good, since it sticks the data in /data/db
+    networks:
+      - backend
+    volumes:
+      - dbdata:/data/db
+
+volumes:
+  dbdata:
+
+networks:
+  frontend:
+  backend:
