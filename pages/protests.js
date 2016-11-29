@@ -66,7 +66,7 @@ export default class extends React.Component {
                 this.props.protests.map( (protest, i) => (
                     <tr key={i}>
                         <td>
-                          <Link href={`/protests/show?id=${protest.id}`}>{ protest.name }</Link>
+                          <Link href={`/protests/show?_id=${protest._id}`}>{ protest.name }</Link>
                         </td>
                         <td>{ protest.jurisdiction.join(", ") }</td>
                         <td><a href={protest.website}>{ protest.website }</a></td>
