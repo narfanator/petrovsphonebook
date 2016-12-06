@@ -1,10 +1,8 @@
 {
   "scripts": {
     "dev": "next",
-
     "preserver": "./node_modules/.bin/babel-node server/seed.js",
     "server": "./node_modules/.bin/babel-node server/_api.js",
-
     "database": "mongod --dbpath=.data"
   },
   "presets": [
@@ -22,6 +20,7 @@
     "next": "^1.1.2",
     "node": "^0.0.0",
     "react-bootstrap": "^0.30.6",
+    "react-easy-form": "^1.1.0",
     "react-jade": "^2.5.0",
     "rsvp": "^3.3.3"
   },

@@ -41,6 +41,8 @@ export default class Layout extends React.Component {
           <link rel="stylesheet" type="text/css" href="/static/bootstrap-3.3.7-dist/css/bootstrap.css" />
           <link rel="stylesheet" type="text/css" href="/static/bootstrap-3.3.7-dist/css/bootstrap-theme.css" />
 
+        	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css" />
+
         </Head>
 
         <Navbar inverse collapseOnSelect>
