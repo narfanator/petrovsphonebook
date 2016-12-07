@@ -8,10 +8,7 @@ export default class ProtestForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      //TODO: Fetch from "model"
-      jurisdiction: ["1", "2"]
-    };
+    this.state = props.initialData
 
     this.handleChange = this.handleChange.bind(this); //TODO: Better understand what .bind(this) does
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,11 +21,13 @@ export default class ProtestForm extends React.Component {
   }
 
   handleSubmit(event) {
-    console.log("handleSubmit")
-    console.log(event)
+    var method = "POST"
+    if(this.state._id != null) {
+      method = "PUT"
+    }
 
     axios({
-      method: 'POST',
+      method: method,
       url: 'http://localhost:3001'+'/protests',
       data: [this.state]
     }).then(function(response) {
