@@ -5,6 +5,8 @@ import QueryString from 'querystring'
 
 import assert from 'assert'
 
+import Protest from "../models/protest"
+
 const db_url = 'mongodb://localhost:27017/myproject'
 
 //TODO: Logging, srsly
@@ -35,6 +37,17 @@ const srv = Micro(async function(req, res) {
 
     if (req.method == "POST") {
       const data = await Micro.json(req)
+
+      if(collection == "protests") {
+        data.map(function(entry){
+          const valid = Protest.schema.validate(data)
+          if(valid != true) {
+            console.log(valid)
+            //TODO: Actually abort n stuff
+          }
+        })
+      }
+
       const db = await MongoClient.connect(db_url)
       const r = await db.collection(collection)
         .insertMany(
@@ -44,7 +57,7 @@ const srv = Micro(async function(req, res) {
               console.log(error)
               Micro.send(res, 500, {error: error, result: result})
             } else {
-              console.log(result.ops)
+              //console.log(result.ops)
               Micro.send(res, 200, result.ops)
             }
           }
@@ -53,13 +66,20 @@ const srv = Micro(async function(req, res) {
     } else if (req.method == "PUT") {
       const data = await Micro.json(req)
       data[0]._id = ObjectID.createFromHexString(data[0]._id)
+
+      if(collection == "protests") {
+        const valid = Protest.schema.validate(data[0])
+        if(valid != true) {
+          console.log(valid)
+          //TODO: Actually abort n stuff
+        }
+      }
+
       const db = await MongoClient.connect(db_url)
 
       //TODO: Error checking + handling... such as making sure a "successful" update actually updated the correct number of records
       //TODO: Multiple record handling
       const result = await db.collection(collection).updateOne({_id: data[0]._id}, data[0])
-      console.log("update result")
-      console.log(res)
 
       const docs = await db.collection(collection).find({_id: data[0]._id}).toArray()
       Micro.send(res, 200, docs)

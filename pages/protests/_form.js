@@ -4,6 +4,8 @@ import Layout from '../../pages/_layout.js'
 import axios from 'axios'
 //Note: a lot of copypasta from https://github.com/geowarin/react-easy-form
 
+import Protest from "../../models/protest"
+
 export default class ProtestForm extends React.Component {
   constructor(props) {
     super(props);
@@ -24,6 +26,12 @@ export default class ProtestForm extends React.Component {
     var method = "POST"
     if(this.state._id != null) {
       method = "PUT"
+    }
+
+    //TODO: This, but for real:
+    const valid = Protest.schema.validate(this.state)
+    if(valid != true) {
+      alert("Data does not pass schema validation")
     }
 
     axios({
