@@ -4,7 +4,7 @@ services:
     build: .
     #image: webapp
     ports:
-      - "3000"
+      - "3000:3000"
     depends_on:
       - server
     command: npm run dev
@@ -17,7 +17,7 @@ services:
     build: .
     #image: server
     ports:
-      - "3001"
+      - "3001:3001"
     links:
       - database
     depends_on:
@@ -32,7 +32,7 @@ services:
   database:
     image: mongo:3.2
     ports:
-      - "27017"
+      - "27017:27017"
     #command: # The default command / entry point is good, since it sticks the data in /data/db
     networks:
       - backend
